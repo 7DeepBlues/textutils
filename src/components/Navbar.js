@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <div>
       <>
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
           <div className='container-fluid'>
             <a className='navbar-brand' href='/'>
-              Navbar
+              {props.title}
             </a>
             <button
               className='navbar-toggler'
@@ -32,47 +33,7 @@ export default function Navbar() {
                 </li>
                 <li className='nav-item'>
                   <a className='nav-link' href='/'>
-                    Link
-                  </a>
-                </li>
-                <li className='nav-item dropdown'>
-                  <a
-                    className='nav-link dropdown-toggle'
-                    href='/'
-                    id='navbarDropdown'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    aria-expanded='false'
-                  >
-                    Dropdown
-                  </a>
-                  <ul
-                    className='dropdown-menu'
-                    aria-labelledby='navbarDropdown'
-                  >
-                    <li>
-                      <a className='dropdown-item' href='/'>
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className='dropdown-item' href='/'>
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <hr className='dropdown-divider' />
-                    </li>
-                    <li>
-                      <a className='dropdown-item' href='/'>
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link disabled' href='/'>
-                    Disabled
+                    {props.aboutText}
                   </a>
                 </li>
               </ul>
@@ -83,7 +44,7 @@ export default function Navbar() {
                   placeholder='Search'
                   aria-label='Search'
                 />
-                <button className='btn btn-outline-success' type='submit'>
+                <button className='btn btn-outline-primary' type='submit'>
                   Search
                 </button>
               </form>
@@ -94,3 +55,12 @@ export default function Navbar() {
     </div>
   );
 }
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string.isRequired,
+};
+Navbar.defaultProps = {
+  title: 'Soumyadeep',
+  aboutText: 'haha',
+};
