@@ -9,10 +9,18 @@ export default function TextForm(props) {
     // console.log('uppercase was clicked');
     setText(text.toLowerCase());
   };
+  const handleCleartext = () => {
+    setText('');
+  };
   const handleOnChange = (event) => {
     // console.log('onchange was clicked');
     setText(event.target.value);
   };
+  const handleCopy = () => {
+    let selection = document.getElementById('myBox');
+    navigator.clipboard.writeText(selection.value);
+  };
+
   const [text, setText] = useState('Enter text here');
   // setText('kdsfxdf');
   return (
@@ -33,6 +41,12 @@ export default function TextForm(props) {
         </button>
         <button className='btn btn-primary mx-2' onClick={handleLoclick}>
           Convert to lowercase
+        </button>
+        <button className='btn btn-primary mx-2' onClick={handleCleartext}>
+          Clear editor
+        </button>
+        <button className='btn btn-primary mx-2' onClick={handleCopy}>
+          Copy text
         </button>
       </div>
       <div className='container my-3'>
